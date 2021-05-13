@@ -6,14 +6,15 @@ import time
 from os import listdir
 from os.path import isfile, join
 onlyfiles = [f for f in listdir('./historical_data') if isfile(join('./historical_data', f))]
-
+onlyfiles = [x[:-4] for x in onlyfiles]
 df = pd.read_csv('./lists/ticker.csv')
 
 for i in tqdm(range(len(df))):
   scrip = df.iloc[i]["TICKER"]
-  if scrip in onlyfiles[:-4]:
+  if scrip in onlyfiles:
       continue
   else:
+    print(f"{scrip} not saved.")
     try:
         temp_df = yf.Ticker(f'{scrip}.NS').history(period='MAX')
         temp_df.dropna(inplace=True)
