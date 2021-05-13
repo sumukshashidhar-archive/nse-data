@@ -1,6 +1,6 @@
 import yfinance as yf
 import pandas as pd
-import tqdm
+from tqdm import tqdm
 import os
 df = pd.read_csv('./lists/ticker.csv')
 
