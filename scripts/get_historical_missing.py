@@ -11,6 +11,7 @@ df = pd.read_csv('./lists/ticker.csv')
 
 for i in tqdm(range(len(df))):
   scrip = df.iloc[i]["TICKER"]
+  print(scrip)
   if scrip in onlyfiles:
       continue
   else:
